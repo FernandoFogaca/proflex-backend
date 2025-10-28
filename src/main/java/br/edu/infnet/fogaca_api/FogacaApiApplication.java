@@ -12,7 +12,6 @@ public class FogacaApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(FogacaApiApplication.class, args);
 
-        // Pacientes  
         Endereco end1 = new Endereco("Rua das Flores", "Centro", "Campos", "RJ", "28000-000");
         Endereco end2 = new Endereco("Av. Brasil", "Copacabana", "Rio de Janeiro", "RJ", "22000-000");
 
@@ -23,23 +22,35 @@ public class FogacaApiApplication {
         p1.mostrarDados();
         p2.mostrarDados();
 
-        // Cadastro manual de um novo paciente (simulação com Scanner)
         Scanner sc = new Scanner(System.in);
-
         System.out.println("\n=== Novo Cadastro de Paciente ===");
 
         System.out.print("Nome: ");
         String nome = sc.nextLine();
+        if (nome.isEmpty()) {
+            System.out.println("Nome não pode estar em branco.");
+        }
 
         System.out.print("Idade: ");
         int idade = sc.nextInt();
-        sc.nextLine(); // limpar
+        sc.nextLine();
+        if (idade <= 0 || idade > 120) {
+            System.out.println("Idade inválida. Deve estar entre 1 e 120.");
+        } else if (idade < 18) {
+            System.out.println("Paciente menor de idade.");
+        }
 
         System.out.print("Email: ");
         String email = sc.nextLine();
+        if (!email.contains("@") || !email.contains(".")) {
+            System.out.println("Email inválido. Verifique o formato.");
+        }
 
         System.out.print("Telefone: ");
         String telefone = sc.nextLine();
+        if (telefone.length() < 8) {
+            System.out.println("Telefone muito curto.");
+        }
 
         System.out.print("O paciente está ativo? (true/false): ");
         boolean ativo = sc.nextBoolean();
@@ -47,18 +58,33 @@ public class FogacaApiApplication {
 
         System.out.print("Rua: ");
         String rua = sc.nextLine();
+        if (rua.isEmpty()) {
+            System.out.println("Rua não pode estar vazia.");
+        }
 
         System.out.print("Bairro: ");
         String bairro = sc.nextLine();
+        if (bairro.isEmpty()) {
+            System.out.println("Bairro é obrigatório.");
+        }
 
         System.out.print("Cidade: ");
         String cidade = sc.nextLine();
+        if (cidade.isEmpty()) {
+            System.out.println("Cidade é obrigatória.");
+        }
 
         System.out.print("Estado: ");
         String estado = sc.nextLine();
+        if (estado.length() != 2) {
+            System.out.println("Estado deve conter 2 letras (ex: RJ).");
+        }
 
         System.out.print("CEP: ");
         String cep = sc.nextLine();
+        if (cep.length() != 9) {
+            System.out.println("CEP inválido. Use o formato 00000-000.");
+        }
 
         Endereco endNovo = new Endereco(rua, bairro, cidade, estado, cep);
         Paciente novoPaciente = new Paciente(nome, idade, email, telefone, ativo, endNovo);
