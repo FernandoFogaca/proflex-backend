@@ -2,7 +2,6 @@ package br.edu.infnet.fogaca_api.model.domain;
 
 public class Paciente {
 
-    //dados do paciente
     String nome;
     int idade;
     String email;
@@ -10,7 +9,6 @@ public class Paciente {
     boolean ativo;
     Endereco endereco; 
 
-    // Construtor com todos os dados
     public Paciente(String nome, int idade, String email, String telefone, boolean ativo, Endereco endereco) {
         this.nome = nome;
         this.idade = idade;
@@ -20,7 +18,6 @@ public class Paciente {
         this.endereco = endereco;
     }
 
-    // mostra as informações no console
     public void mostrarDados() {
         System.out.println("Nome: " + nome);
         System.out.println("Idade: " + idade);
@@ -30,5 +27,9 @@ public class Paciente {
         System.out.println("--- Endereço ---");
         endereco.mostrarEndereco();
         System.out.println("---------------------------");
+    }
+
+    public String getNome() {
+        return nome;
     }
 }
