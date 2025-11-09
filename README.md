@@ -1,94 +1,162 @@
-# Proflex Backend (Java)
+Proflex Backend (Java)
+Developed by Fernando Fogaça
 
-### Developed by Fernando Fogaça  
-**Version:** TP01 – October 2025  
+Professor: Elberth Moraes
+Version: TP01 and TP02 – 2025
 
----
+Overview
 
-## 🧭 Overview
+Este projeto marca o início do Proflex Backend, uma aplicação desenvolvida em Java que servirá como base para o Proflex Web e o Proflex Mobile.
+O objetivo é criar um sistema completo para profissionais autônomos de fisioterapia e bem-estar, permitindo o gerenciamento de pacientes, consultas e registros clínicos.
 
-This project is the beginning of the **Proflex Backend**, a Java-based API that will serve both the **Proflex Web** and **Proflex Mobile** applications.  
-The aim at this first stage was to set up the environment, understand the fundamentals of Java, and start shaping the data structure for the Proflex system.
+Durante o TP01 e o TP02, foram aplicados os principais fundamentos da linguagem Java, com foco na construção de programas simples, leitura de dados, validações e estruturação de classes.
 
-The Proflex platform is designed for **independent physiotherapists and wellness professionals**, helping them manage clients, sessions, and personal records.  
-This backend will gradually become the central hub that connects all Proflex versions together.
+TP01 – Fundamentos e Estrutura Inicial
 
----
+A primeira etapa teve como foco o ambiente de desenvolvimento e os conceitos básicos da linguagem.
 
-## ⚙️ Current Stage (TP01)
+Etapas concluídas
 
-This first version focuses on the **core Java fundamentals**:
+Instalação e configuração do JDK 21 e Eclipse IDE
 
-- ✅ Environment setup with **JDK 21** and **Eclipse IDE**  
-- ✅ Creation of a **Spring Boot** project (`fogaca_api`)  
-- ✅ Implementation of the first **Java classes**:
-  - `Paciente` (Patient data)
-  - `Endereco` (Address data)
-- ✅ Use of **variables and data types** (`String`, `int`, `boolean`)
-- ✅ Reading input from the user using the **Scanner** class  
-- ✅ Displaying information in the console with `System.out.println`
-- ✅ Debugging with breakpoints and variable inspection inside Eclipse  
+Criação do projeto base Spring Boot (fogaca_api)
 
-The project currently simulates a **patient registration process** via the console.  
-Users can type patient information directly into the terminal, and the system creates and displays the profile details dynamically.
+Implementação das primeiras classes:
 
----
+Paciente – armazena informações do paciente
 
-## 🧩 Project Structure
+Endereco – representa os dados de endereço
 
+Uso de variáveis e tipos primitivos (String, int, boolean)
+
+Leitura de dados do usuário com Scanner
+
+Impressão de informações no console (System.out.println)
+
+Introdução ao debug e inspeção de variáveis no Eclipse
+
+Estrutura do projeto (TP01)
 fogaca_api/
 ├── src/
-│ ├── main/java/br/edu/infnet/fogaca_api/
-│ │ ├── FogacaApiApplication.java
-│ │ ├── model/domain/Paciente.java
-│ │ └── model/domain/Endereco.java
+│   ├── main/java/br/edu/infnet/fogaca_api/
+│   │   ├── FogacaApiApplication.java
+│   │   ├── model/domain/Paciente.java
+│   │   └── model/domain/Endereco.java
 │
 ├── pom.xml
 └── README.md
 
+Resultado
 
----
+O sistema foi capaz de criar objetos de paciente e endereço manualmente, exibindo os dados no console.
+Essa base serviu de ponto de partida para a próxima fase, onde o programa passou a receber entradas dinâmicas do usuário.
 
-## What Has Been Learned
+TP02 – Controle de Fluxo, Entrada de Dados e Validação
 
-Through this first version, I learned how to:
-- Configure and run a Java project from scratch  
-- Understand classes, attributes, and methods  
-- Work with constructors and objects  
-- Use `Scanner` for input (like a simple console “form”)  
-- Print data and test logic through the console  
-- Use Eclipse’s **debug mode** to track variable values step by step  
+Na segunda etapa, o projeto foi aprimorado com estruturas condicionais, repetições e validações de entrada.
+O sistema passou a funcionar de forma interativa, simulando um pequeno menu de cadastro.
 
-This practical experience helped me connect theory with a real project — my own **Proflex** system — instead of generic exercises.
+Funcionalidades implementadas
 
----
+Menu principal com quatro opções:
 
-## 🚀 Next Steps (TP02 Preview)
+Cadastrar novo paciente
 
-The next phase will focus on:
-- Storing multiple patients (lists and collections)  
-- Organising data with packages and services  
-- Preparing REST endpoints for real integration with the Proflex Web and Mobile apps  
+Listar pacientes
 
----
+Buscar paciente por nome
 
-## 🧾 About the Project
+Sair do sistema
 
-**Proflex** is a multi-platform system originally built with:
-- **React** (Web) → [github.com/FernandoFogaca/proflex](https://github.com/FernandoFogaca/proflex)
-- **React Native** (Mobile) → [github.com/FernandoFogaca/ProflexApp](https://github.com/FernandoFogaca/ProflexApp)
+Entrada de dados via console com a classe Scanner
 
-The **Java Backend** is now being developed to connect them both through a unified API.
+Validação de campos obrigatórios (nome, idade, cidade, etc.)
 
----
+Armazenamento em lista (ArrayList<Paciente>) para guardar múltiplos cadastros
 
-> 💬 *“I decided to use my own real project (Proflex) for this Java course instead of random exercises,  
-> so I could learn Java while building something that actually means something to me.”*  
-> — Fernando Fogaça
+Estruturas de decisão (if, else if, else) para controlar o fluxo
 
----
+Laço de repetição while para manter o sistema em execução até o usuário optar por sair
 
-### 🏁 Status
-**✅ TP01 – Completed and running successfully in Eclipse (macOS, JDK 21)**  
-Backend foundation ready for the next stages of development.
+Exemplo de execução
+=== Sistema Proflex ===
 
+--- MENU PRINCIPAL ---
+1 - Cadastrar novo paciente
+2 - Listar pacientes
+3 - Buscar paciente por nome
+4 - Sair
+Escolha uma opção: 1
+
+--- CADASTRO DE PACIENTE ---
+Nome: Fernando Fogaça
+Idade: 35
+Email: fernando@proflex.com
+Telefone: (63)8077-7605
+Rua: Argostraat 150
+Bairro: Centro
+Cidade: Campos
+Estado: RJ
+CEP: 28000-000
+Paciente cadastrado com sucesso!
+
+
+O sistema permanece ativo até que o usuário escolha a opção “4 - Sair”.
+Durante o cadastro, são feitas verificações básicas para evitar campos vazios ou incorretos.
+
+Learning Outcomes
+
+Durante o desenvolvimento do TP01 e TP02, foram consolidados os seguintes aprendizados:
+
+Criação e execução de projetos Java no Eclipse
+
+Uso de classes, atributos, construtores e métodos
+
+Manipulação de listas (ArrayList) e objetos
+
+Aplicação de estruturas condicionais e de repetição
+
+Validação de entradas e controle de fluxo
+
+Organização de pacotes (model/domain)
+
+Interação com o usuário via console
+
+Essas etapas reforçaram o domínio dos conceitos básicos da linguagem Java, conectando teoria e prática em um projeto real.
+
+Next Steps (TP03 Preview)
+
+A próxima etapa (TP03) dará continuidade à evolução do sistema, abordando:
+
+Introdução à Programação Orientada a Objetos (POO) completa
+
+Criação de herança e polimorfismo
+
+Separação em camadas de serviço e controle
+
+Início da implementação de endpoints REST
+
+About the Project
+
+Proflex é um sistema multiplataforma criado para auxiliar profissionais de fisioterapia e saúde integrativa no gerenciamento de atendimentos e pacientes.
+
+Versões relacionadas:
+
+Web (React): github.com/FernandoFogaca/proflex
+
+Mobile (React Native): github.com/FernandoFogaca/ProflexApp
+
+O Backend em Java é a nova camada que vai integrar essas aplicações por meio de uma API unificada.
+
+Author’s Note
+
+Este projeto foi desenvolvido como parte das atividades da disciplina de Programação em Java, sob orientação do professor Elberth Moraes.
+O objetivo foi aprender os conceitos da linguagem utilizando um projeto próprio e real — o Proflex — em vez de exemplos genéricos.
+
+Status
+
+TP01 – Concluído
+TP02 – Concluído e funcional
+TP03 – Em desenvolvimento (próxima etapa)
+
+Sistema testado no macOS com Eclipse IDE (2025-12 M1) e JDK 21.
