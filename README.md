@@ -11,7 +11,7 @@ O objetivo é criar um sistema completo para profissionais autônomos de fisiote
 
 Durante o TP01 e o TP02, foram aplicados os principais fundamentos da linguagem Java, com foco na construção de programas simples, leitura de dados, validações e estruturação de classes.
 
-TP01 – Fundamentos e Estrutura Inicial
+TP01   Fundamentos e Estrutura Inicial
 
 A primeira etapa teve como foco o ambiente de desenvolvimento e os conceitos básicos da linguagem.
 
@@ -134,9 +134,8 @@ Criação de herança e polimorfismo
 
 Separação em camadas de serviço e controle
 
-Início da implementação de endpoints REST
+Início da implementação de endpoints REST.
 
-About the Project
 
 Proflex é um sistema multiplataforma criado para auxiliar profissionais de fisioterapia e saúde integrativa no gerenciamento de atendimentos e pacientes.
 
@@ -150,7 +149,7 @@ O Backend em Java é a nova camada que vai integrar essas aplicações por meio 
 
 Author’s Note
 
-Este projeto foi desenvolvido como parte das atividades da disciplina de Programação em Java, sob orientação do professor Elberth Moraes.
+Este projeto foi desenvolvido como parte das atividades da disciplina de Programação em Java.
 O objetivo foi aprender os conceitos da linguagem utilizando um projeto próprio e real — o Proflex — em vez de exemplos genéricos.
 
 Status
