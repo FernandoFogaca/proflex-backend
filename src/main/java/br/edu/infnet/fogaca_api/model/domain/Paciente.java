@@ -1,12 +1,10 @@
 package br.edu.infnet.fogaca_api.model.domain;
 
-public class Paciente {
+public class Paciente extends Pessoa {
 
     private static int contadorProntuario = 1;
 
-    private String prontuario;
-    private String nome;
-    private int idade;
+    private final String prontuario;
     private String email;
     private String telefone;
     private boolean ativo;
@@ -14,20 +12,12 @@ public class Paciente {
     private Genero genero;
     private int consultasRealizadas;
 
-    public Paciente() {
-        this.prontuario = gerarProntuario();
-    }
+    public Paciente(String nome, int idade, String email, String telefone,
+                    boolean ativo, Endereco endereco, Genero genero) {
 
-    private static String gerarProntuario() {
-        String codigo = String.format("PCT-%03d", contadorProntuario);
-        contadorProntuario++;
-        return codigo;
-    }
+        super(nome, idade);
 
-    public Paciente(String nome, int idade, String email, String telefone, boolean ativo, Endereco endereco, Genero genero) {
         this.prontuario = gerarProntuario();
-        this.nome = nome;
-        this.idade = idade;
         this.email = email;
         this.telefone = telefone;
         this.ativo = ativo;
@@ -36,16 +26,12 @@ public class Paciente {
         this.consultasRealizadas = 0;
     }
 
+    private static String gerarProntuario() {
+        return String.format("PCT-%03d", contadorProntuario++);
+    }
+
     public String getProntuario() {
         return prontuario;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public int getConsultasRealizadas() {
-        return consultasRealizadas;
     }
 
     public void registrarConsulta() {
@@ -53,16 +39,13 @@ public class Paciente {
     }
 
     public boolean emailValido() {
-        if (email == null) {
-            return false;
+        if (email == null || email.isBlank()) {
+            throw new IllegalArgumentException("Email inválido");
         }
-        return email.contains("@") && email.contains(".");
+        return email.contains("@");
     }
 
-    public void resumoRapido() {
-        System.out.println(prontuario + " - " + nome + " (" + idade + " anos, " + genero + ")");
-    }
-
+    @Override
     public void mostrarDados() {
         System.out.println("Prontuário: " + prontuario);
         System.out.println("Nome: " + nome);
@@ -72,10 +55,14 @@ public class Paciente {
         System.out.println("Ativo: " + ativo);
         System.out.println("Gênero: " + genero);
         System.out.println("Consultas realizadas: " + consultasRealizadas);
-        System.out.println("--- Endereço ---");
+
         if (endereco != null) {
             endereco.mostrarEndereco();
         }
-        System.out.println("---------------------------");
+    }
+
+    @Override
+    public String toString() {
+        return prontuario + " - " + nome + " (" + idade + " anos)";
     }
 }

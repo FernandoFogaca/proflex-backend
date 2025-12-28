@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import br.edu.infnet.fogaca_api.model.domain.Endereco;
-import br.edu.infnet.fogaca_api.model.domain.Genero;
-import br.edu.infnet.fogaca_api.model.domain.Paciente;
+import br.edu.infnet.fogaca_api.model.domain.*;
+import br.edu.infnet.fogaca_api.ArquivoPacientes;
 
 public class FogacaApiApplication {
 
@@ -16,139 +15,93 @@ public class FogacaApiApplication {
         List<Paciente> listaPacientes = new ArrayList<>();
         boolean rodando = true;
 
-        System.out.println("Sistema Proflex");
-
         while (rodando) {
 
-            System.out.println("\n--- MENU PRINCIPAL ---");
-            System.out.println("1 - Cadastrar novo paciente");
-            System.out.println("2 - Listar pacientes (resumo)");
-            System.out.println("3 - Buscar paciente por nome");
-            System.out.println("4 - Registrar nova consulta");
+            System.out.println("\n--- MENU ---");
+            System.out.println("1 - Cadastrar paciente");
+            System.out.println("2 - Listar pacientes");
+            System.out.println("3 - Registrar consulta");
+            System.out.println("4 - Salvar pacientes em arquivo");
             System.out.println("5 - Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.print("Opção: ");
 
             int opcao = in.nextInt();
             in.nextLine();
 
-            if (opcao == 1) {
+            try {
 
-                System.out.println("\nCADASTRO DE PACIENTE");
+                switch (opcao) {
 
-                System.out.print("Nome: ");
-                String nome = in.nextLine();
+                    case 1:
+                        System.out.print("Nome: ");
+                        String nome = in.nextLine();
 
-                System.out.print("Idade: ");
-                int idade = in.nextInt();
-                in.nextLine();
+                        System.out.print("Idade: ");
+                        int idade = in.nextInt();
+                        in.nextLine();
 
-                System.out.print("Email: ");
-                String email = in.nextLine();
+                        System.out.print("Email: ");
+                        String email = in.nextLine();
 
-                System.out.print("Telefone: ");
-                String telefone = in.nextLine();
+                        System.out.print("Telefone: ");
+                        String telefone = in.nextLine();
 
-                System.out.print("Gênero (M/F/O): ");
-                String generoDigitado = in.nextLine().trim().toUpperCase();
-                Genero genero = Genero.OUTRO;
-                if (generoDigitado.equals("M")) {
-                    genero = Genero.MASCULINO;
-                } else if (generoDigitado.equals("F")) {
-                    genero = Genero.FEMININO;
-                }
+                        Endereco end = new Endereco(
+                                "Rua A", "Centro", "Cidade", "UF", "00000-000"
+                        );
 
-                System.out.print("Rua: ");
-                String rua = in.nextLine();
+                        Paciente p = new Paciente(
+                                nome, idade, email, telefone, true, end, Genero.OUTRO
+                        );
 
-                System.out.print("Bairro: ");
-                String bairro = in.nextLine();
-
-                System.out.print("Cidade: ");
-                String cidade = in.nextLine();
-
-                System.out.print("Estado (ex: RJ): ");
-                String estado = in.nextLine();
-
-                System.out.print("CEP: ");
-                String cep = in.nextLine();
-
-                if (nome.isEmpty() || idade <= 0) {
-                    System.out.println("Cadastro inválido. Verifique os dados e tente novamente.");
-                } else {
-                    Endereco end = new Endereco(rua, bairro, cidade, estado, cep);
-                    Paciente novo = new Paciente(nome, idade, email, telefone, true, end, genero);
-
-                    if (!novo.emailValido()) {
-                        System.out.println("Aviso: o email parece inválido.");
-                    }
-
-                    listaPacientes.add(novo);
-                    System.out.println("Paciente cadastrado com sucesso!");
-                    System.out.println("Prontuário gerado: " + novo.getProntuario());
-                }
-
-            } else if (opcao == 2) {
-
-                System.out.println("\n--- LISTA DE PACIENTES ---");
-                if (listaPacientes.isEmpty()) {
-                    System.out.println("Nenhum paciente cadastrado ainda.");
-                } else {
-                    for (Paciente p : listaPacientes) {
-                        p.resumoRapido();
-                        System.out.println("Consultas: " + p.getConsultasRealizadas());
-                        System.out.println("---------------------------");
-                    }
-                }
-
-            } else if (opcao == 3) {
-
-                System.out.print("\nDigite o nome do paciente que deseja buscar: ");
-                String busca = in.nextLine();
-                boolean encontrado = false;
-
-                for (Paciente p : listaPacientes) {
-                    if (p.getNome().equalsIgnoreCase(busca)) {
-                        System.out.println("Paciente encontrado:");
-                        p.mostrarDados();
-                        encontrado = true;
+                        listaPacientes.add(p);
+                        System.out.println("Paciente cadastrado.");
                         break;
-                    }
-                }
 
-                if (!encontrado) {
-                    System.out.println("Paciente não encontrado.");
-                }
-
-            } else if (opcao == 4) {
-
-                System.out.print("\nDigite o nome do paciente para registrar consulta: ");
-                String busca = in.nextLine();
-                boolean encontrado = false;
-
-                for (Paciente p : listaPacientes) {
-                    if (p.getNome().equalsIgnoreCase(busca)) {
-                        p.registrarConsulta();
-                        System.out.println("Consulta registrada para o paciente " + p.getNome());
-                        System.out.println("Total de consultas: " + p.getConsultasRealizadas());
-                        encontrado = true;
+                    case 2:
+                        for (Paciente pac : listaPacientes) {
+                            System.out.println(pac);
+                        }
                         break;
-                    }
+
+                    case 3:
+                        System.out.print("Nome do paciente: ");
+                        String busca = in.nextLine();
+                        boolean achou = false;
+
+                        for (Paciente pac : listaPacientes) {
+                            if (pac.getNome().equalsIgnoreCase(busca)) {
+                                pac.registrarConsulta();
+                                System.out.println("Consulta registrada.");
+                                achou = true;
+                                break;
+                            }
+                        }
+
+                        if (!achou) {
+                            System.out.println("Paciente não encontrado.");
+                        }
+                        break;
+
+                    case 4:
+                        ArquivoPacientes.salvar(listaPacientes);
+                        System.out.println("Pacientes salvos em arquivo.");
+                        break;
+
+                    case 5:
+                        rodando = false;
+                        break;
+
+                    default:
+                        System.out.println("Opção inválida.");
                 }
 
-                if (!encontrado) {
-                    System.out.println("Paciente não encontrado.");
-                }
-
-            } else if (opcao == 5) {
-                System.out.println("Encerrando o sistema...");
-                rodando = false;
-
-            } else {
-                System.out.println("Opção inválida. Tente novamente.");
+            } catch (Exception e) {
+                System.out.println("Erro: " + e.getMessage());
             }
         }
 
         in.close();
-        System.out.println("=== Sistema finalizado ===");
+        System.out.println("Sistema finalizado.");
     }
 }
