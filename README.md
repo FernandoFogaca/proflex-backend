@@ -1,17 +1,17 @@
  - Proflex Backend (Java)
 
-Aluno: Fernando Fogaça
-Professor: Elberth Moraes
-Disciplina: Fundamentos de Desenvolvimento com Java
-Entrega: AT – Destaque 4
+- Aluno: Fernando Fogaça
+- Professor: Elberth Moraes
+- Disciplina: Fundamentos de Desenvolvimento com Java
+- Entrega: AT – Destaque 4
 
-Sobre o projeto
+- Sobre o projeto
 
 Este repositório contém o backend do sistema Proflex, desenvolvido ao longo da disciplina de forma incremental. O objetivo do projeto é organizar pacientes, consultas e informações clínicas, utilizando Java e conceitos de Programação Orientada a Objetos.
 
 O código foi evoluindo conforme os conteúdos vistos em aula, sempre mantendo o funcionamento via console e reaproveitando o que já tinha sido feito nos trabalhos anteriores.
 
-Evolução do trabalho
+- Evolução do trabalho
 
 No início do projeto (TP01) foi feita a configuração do ambiente com JDK 21 e Eclipse, além da criação das primeiras classes, como Paciente e Endereco, com testes simples no console.
 
@@ -19,7 +19,7 @@ No TP02 o sistema passou a receber dados pelo console, com um menu interativo. F
 
 No TP03 o foco foi Programação Orientada a Objetos. Entraram novas classes e enumerações, como Consulta, Genero e TipoConsulta. A classe Paciente foi melhor organizada, com atributos privados, getters e setters, construtores diferentes e métodos específicos para controle das consultas.
 
-AT – Recurso 4
+- AT – Recurso 4
 
 No AT da Feature 4 o sistema foi aprimorado para ficar mais robusto.
 
@@ -37,11 +37,11 @@ Menu configurado para usar switch-case (TP02).
 Construtor chama outro construtor para evitar reprodução de código.
 Validações adicionadas nos setters para reforçar o encapsulamento (TP03).
 
-Status
+- Status
 
 TP01: concluídos
 TP02: concluídos
 TP03: concluídos
 AT – Recurso 4: concluídos
 
-Projeto testado no macOS com Eclipse IDE e JDK 21.
+- Projeto testado no macOS com Eclipse IDE e JDK 21.
