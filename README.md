@@ -1,164 +1,47 @@
 Proflex Backend (Java)
 
-Desenvolvido por Fernando Fogaça
+Aluno: Fernando Fogaça
 Professor: Elberth Moraes
-Entrega TP01, TP02 e TP03 – 2025
+Disciplina: Fundamentos de Desenvolvimento com Java
+Entrega: AT – Destaque 4
 
-Visão Geral
+Sobre o projeto
 
-Este repositório guarda a evolução do backend do Proflex, um sistema que estou desenvolvendo para organizar e acompanhar pacientes, consultas e informações clínicas.
-A proposta é criar uma base em Java que, mais para frente, será conectada ao Proflex Web e ao Proflex Mobile.
+Este repositório contém o backend do sistema Proflex, desenvolvido ao longo da disciplina de forma incremental. O objetivo do projeto é organizar pacientes, consultas e informações clínicas, utilizando Java e conceitos de Programação Orientada a Objetos.
 
-O projeto cresceu aos poucos durante os TPs.
-No TP01 foi montada a estrutura inicial.
-No TP02 o sistema passou a receber dados pelo console.
-No TP03 entrou a parte da POO, com novas classes, enums e métodos organizados.
+O código foi evoluindo conforme os conteúdos vistos em aula, sempre mantendo o funcionamento via console e reaproveitando o que já tinha sido feito nos trabalhos anteriores.
 
-TP01 – Estrutura Inicial
+Evolução do trabalho
 
-O TP01 serviu para configurar tudo e começar com as primeiras classes.
+No início do projeto (TP01) foi feita a configuração do ambiente com JDK 21 e Eclipse, além da criação das primeiras classes, como Paciente e Endereco, com testes simples no console.
 
-O que foi feito:
+No TP02 o sistema passou a receber dados pelo console, com um menu interativo. Foram selecionadas opções para cadastrar pacientes, listar e buscar registros, usando Scanner e ArrayList. Após o feedback do professor, o menu foi ajustado para usar o switch-case.
 
-Configuração do JDK 21 e Eclipse
+No TP03 o foco foi Programação Orientada a Objetos. Entraram novas classes e enumerações, como Consulta, Genero e TipoConsulta. A classe Paciente foi melhor organizada, com atributos privados, getters e setters, construtores diferentes e métodos específicos para controle das consultas.
 
-Criação do projeto base usando Spring Boot
+AT – Recurso 4
 
-Primeiras classes:
+No AT da Feature 4 o sistema foi aprimorado para ficar mais robusto.
 
-Paciente
+Foi criada a classe abstrata Pessoa, e a classe Paciente passou a herdar dela, aplicando herança, abstração e polimorfismo. Os métodos foram sobrescritos e o uso de super foi aplicado nos construtores.
 
-Endereco
+O encapsulamento foi reforçado com validações nos setters, evitando dados inválidos. Também foi implementado o encadeamento de construtores, conforme solicitado no feedback do professor.
 
-Criação de objetos e impressão no console
+O tratamento de erros foi feito com try/catch no menu principal e lançamento de abordagens com throw em casos de erro.
 
-Testes simples com entrada de dados e debug no Eclipse
+Além disso, foi adicionada a persistência de dados em arquivo texto, utilizando FileWriter e BufferedWriter, permitindo salvar os pacientes cadastrados.
 
-Estrutura inicial:
-fogaca_api/
-└── src/main/java/br/edu/infnet/fogaca_api/
-    ├── FogacaApiApplication.java
-    ├── model/domain/Paciente.java
-    └── model/domain/Endereco.java
+O que foi corrigido a partir dos feedbacks
 
+Menu configurado para usar switch-case (TP02).
+Construtor chama outro construtor para evitar reprodução de código.
+Validações adicionadas nos setters para reforçar o encapsulamento (TP03).
 
-O sistema exibia alguns pacientes fixos criados direto no código.
+Status
 
-TP02 – Entrada de Dados, Validações e Controle de Fluxo
+TP01: concluídos
+TP02: concluídos
+TP03: concluídos
+AT – Recurso 4: concluídos
 
-No TP02 o código virou um pequeno sistema de console com menu.
-
-Implementações:
-
-Menu principal com:
-
-Cadastrar paciente
-
-Listar pacientes
-
-Buscar por nome
-
-Sair
-
-Entrada com Scanner
-
-Lista de pacientes usando ArrayList
-
-Validações básicas (nome vazio, idade inválida, etc.)
-
-Laço while mantendo o sistema rodando até o usuário sair
-
-Esse TP garantiu prática com condicionais e repetições.
-
-TP03 – Programação Orientada a Objetos
-
-O TP03 levou o projeto para a estrutura de POO, com novas classes e organização mais completa.
-
-O que foi adicionado:
-1. Novas classes e enums
-
-Genero (enum)
-
-TipoConsulta (enum)
-
-Consulta (classe representando a consulta do paciente)
-
-2. Melhorias na classe Paciente:
-
-Atributos privados
-
-Getters e setters
-
-Construtores diferentes
-
-Código simples de identificação do paciente
-
-Métodos como:
-
-registrar consulta
-
-exibir resumo
-
-checar email
-
-mostrar dados atualizados
-
-3. Novas opções no sistema:
-
-O menu ganhou a parte de registrar consulta de um paciente.
-
-4. Testes no main:
-
-Todos os objetos criados foram testados no próprio menu.
-
-Aprendizados ao longo dos TPs
-
-Durante o TP01, TP02 e TP03 foram praticados:
-
-Criação de projetos Java
-
-Classes, objetos, atributos e métodos
-
-Construtores e sobrecarga
-
-Uso de enums
-
-Encapsulamento
-
-Laços de repetição e condicionais
-
-Organização em pacotes
-
-Interação via console
-
-Relacionamento entre classes
-
-Tudo isso fez o sistema evoluir de um código fixo para algo interativo e depois para algo mais próximo de um modelo real de sistema.
-
-Próximos Passos (para frente)
-
-Criar camada de serviço
-
-Separar melhor responsabilidades
-
-Preparar primeiros endpoints REST
-
-Integrar futuramente com o Proflex Web e Mobile
-
-Outros Repositórios do Proflex
-
-Proflex Web (React):
-github.com/FernandoFogaca/proflex
-
-Proflex Mobile (React Native):
-github.com/FernandoFogaca/ProflexApp
-
-Status Final
-
-TP01: concluído
-
-TP02: concluído
-
-TP03: concluído
-
-Sistema testado no macOS com Eclipse IDE (2025-12 M1) e JDK 21.
+Projeto testado no macOS com Eclipse IDE e JDK 21.
